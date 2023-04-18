@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_2847952_s8jhen97u8k.css">
+    <style>
+        span{
+            color: #000;
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="text" value="asd456123">
+    <i class="iconfont">&#xe607;</i>
+    <!-- <span class="iconfont">&#xe60c;</span> -->
+
+
+    <p>字体色：
+        <span>红色</span>
+        <span>黄色</span>
+        <span>蓝色</span>
+        <span>绿色</span>
+        <span>紫色</span>
+        <span>粉色</span>
+        <span>灰色</span>
+    </p>
+
+    <p>背景色：
+        <span>红色</span>
+        <span>黄色</span>
+        <span>蓝色</span>
+        <span>绿色</span>
+        <span>紫色</span>
+        <span>粉色</span>
+        <span>灰色</span>
+    </p>
+
+    <button>去掉边框</button><br>
+    <button class="setborder" style="margin-top: 20px;">设置边框</button>
+    <input class="bordersize" type="text" style="width:30px;margin-right: 10px;">
+    <span>颜色：</span>
+    <select id="selectBox" name="items">
+        <option value="1">黑色</option>
+        <option value="2">白色</option>
+        <option value="3">紫色</option>
+        <option value="4">红色</option>
+      </select>
+
+      <p>
+        <button class="changeThem">切换主题</button>
+      </p>
+
+    <script>
+        //隐藏和现实密码
+        var isShow=document.querySelector('.iconfont');
+        var flag=0;
+        isShow.onclick=function(){
+            if (flag==0){
+                document.querySelector('input').value="********";
+                isShow.innerHTML="&#xe60c;";
+                flag=1;
+            }else{
+                document.querySelector('input').value="asd456123";
+                isShow.innerHTML="&#xe607;";
+                flag=0;
+            }
+        }
+
+        //切换字体颜色
+        var fontcolorp=document.querySelectorAll('p')[0];
+        fontcolorp.children[0].onclick=function(){
+            document.querySelector('input').style.color="red";
+        }
+        fontcolorp.children[1].onclick=function(){
+            document.querySelector('input').style.color="orange";
+        }
+        fontcolorp.children[2].onclick=function(){
+            document.querySelector('input').style.color="blue";
+        }
+
+        //切换背景色
+        var backgroundcolorp=document.querySelectorAll('p')[1];
+        backgroundcolorp.children[0].onclick=function(){
+            document.querySelector('input').style.backgroundColor="red";
+
+        }
+        backgroundcolorp.children[1].onclick=function(){
+            document.querySelector('input').style.backgroundColor="yellow";
+
+        }
+
+          //切换主题
+          var changeThem=document.querySelector('.changeThem');
+        var num=0;
+        var spannum=document.querySelectorAll('span');
+        changeThem.onclick=function(){
+            if(num==0){
+                document.querySelector('body').style.backgroundColor="#000"
+                document.querySelector('body').style.color="#fff";
+
+                for (let i = 0; i < spannum.length; i++) {
+                    spannum[i].style.color="#fff";                    
+                }
+                num=1;
+                
+            }else{
+                document.querySelector('body').style.backgroundColor="#fff"
+                document.querySelector('body').style.color="#000";
+
+                for (let i = 0; i < spannum.length; i++) {
+                    spannum[i].style.color="#000";                    
+                }
+                num=0;
+            }
+        }
+
+
+        //去掉边框
+        document.querySelectorAll('button')[0].onclick=function(){
+            document.querySelector('input').style.border="none";
+        }
+
+        //设置边框
+        var setborder= document.querySelector('.setborder');
+        var content="";
+        setborder.onclick=function(){
+            var bordersize= document.querySelector('.bordersize').value;
+            content=bordersize+"px";
+            var selectcolor= document.querySelector("#selectBox").value;
+            if(selectcolor==1){
+                content+=" #000 solid";
+            }
+            if(selectcolor==2){
+                content+=" #fff solid";
+            }
+            if(selectcolor==3){
+                content+=" purple solid";
+            }
+            if(selectcolor==4){
+                content+=" red solid";
+            }
+            document.querySelector('input').style.border=content;
+        }
+        
+      
+
+    </script>
+</body>
+</html>
